@@ -2,7 +2,7 @@
 
 let addForm = document.getElementById('add-form');
 
-function addItem(e) {
+function addItem() {
   let list = document.getElementById('list');
   let newItem = document.createElement('li');
   let newText = document.createTextNode('test');
@@ -17,9 +17,10 @@ function addItem(e) {
   newItem.appendChild(newInput);
   newItem.appendChild(newLabel);
 
-  list.appendChild(newItem);
+  // list.appendChild(newItem);
+  list.insertBefore(newItem, list.firstChild);
 }
 
 addForm.addEventListener('submit', function() {
-  addItem(e);
+  addItem();
 }, false);
