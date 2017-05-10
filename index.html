@@ -9,19 +9,19 @@
   </head>
   <body>
     <nav>
-  <div class="nav-wrapper teal">
-    <a href="#" class="brand-logo center">
-      <i class="large material-icons">shopping_cart</i> Shopping List
-    </a>
-    <ul class="right">
-      <li>
-        <div class="chip">
-          <span id="counter">5</span>
-        </div>
-      </li>
-    </ul>
-  </div>
-</nav>
+      <div class="nav-wrapper teal">
+        <a href="#" class="brand-logo center">
+          <i class="large material-icons">shopping_cart</i> Shopping List
+        </a>
+        <ul class="right">
+          <li>
+            <div class="chip">
+              <span id="counter">5</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
 <div class="container">
 
@@ -29,8 +29,8 @@
     <form id="add-form" action="#">
       <div class="valign-wrapper">
         <div class="col s7 offset-s1 input-field">
-          <input id="add-item" type="text">
-          <label for="add-item">Add a new item</label>
+          <input id="add-item" type="text" class="validate" required maxlength="140">
+          <label for="add-item" data-error="Cannot be empty!">Add a new item</label>
         </div>
         <div class="col s3">
           <button id="add-btn" class="btn waves-effect waves-light" type="submit">

@@ -10,8 +10,13 @@ function updateNavCounter() {
   navCounter.textContent = listItems.length;
 }
 
-function addItem(e) {
+function addItem() {
   let userInput = document.getElementById('add-item').value;
+
+  if(userInput.trim() === '') {
+    return;
+  }
+
   let list = document.getElementById('list');
   let newItem = document.createElement('li');
   let newText = document.createTextNode(userInput);
@@ -34,8 +39,8 @@ function addItem(e) {
   updateNavCounter();
 }
 
-addForm.addEventListener('submit', function(e) {
-  addItem(e);
+addForm.addEventListener('submit', function() {
+  addItem();
 }, false);
 
 updateNavCounter();
