@@ -1,7 +1,13 @@
 'use strict';
 
 let addForm = document.getElementById('add-form');
-let idCounter = 5;
+
+function updateCounter() {
+  let listItems = document.querySelectorAll('li.collection-item');
+  let navCounter = document.getElementById('counter');
+
+  navCounter.textContent = listItems.length;
+}
 
 function addItem(e) {
   let userInput = document.getElementById('add-item').value;
@@ -20,8 +26,12 @@ function addItem(e) {
   newItem.appendChild(newLabel);
 
   list.insertBefore(newItem, list.firstChild);
+  
+  updateCounter();
 }
 
 addForm.addEventListener('submit', function(e) {
   addItem(e);
 }, false);
+
+updateCounter();
