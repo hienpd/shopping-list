@@ -18,6 +18,7 @@ function addItem() {
   }
 
   let list = document.getElementById('list');
+  let addForm = document.getElementById('add-form');
   let newItem = document.createElement('li');
   let newText = document.createTextNode(userInput);
   let newInput = document.createElement('input');
@@ -36,6 +37,7 @@ function addItem() {
 
   list.insertBefore(newItem, list.firstChild);
 
+  addForm.reset();
   updateNavCounter();
 }
 
