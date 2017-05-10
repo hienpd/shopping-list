@@ -1,8 +1,9 @@
 'use strict';
 
 let addForm = document.getElementById('add-form');
+let labelIdCount = 5;
 
-function updateCounter() {
+function updateNavCounter() {
   let listItems = document.querySelectorAll('li.collection-item');
   let navCounter = document.getElementById('counter');
 
@@ -17,21 +18,24 @@ function addItem(e) {
   let newInput = document.createElement('input');
   let newLabel = document.createElement('label');
 
+  labelIdCount++;
+
   newItem.className = 'collection-item';
   newInput.setAttribute('type', 'checkbox');
-  newLabel.setAttribute('for', userInput);
+  newInput.setAttribute('id', labelIdCount);
+  newLabel.setAttribute('for', labelIdCount);
 
   newLabel.appendChild(newText);
   newItem.appendChild(newInput);
   newItem.appendChild(newLabel);
 
   list.insertBefore(newItem, list.firstChild);
-  
-  updateCounter();
+
+  updateNavCounter();
 }
 
 addForm.addEventListener('submit', function(e) {
   addItem(e);
 }, false);
 
-updateCounter();
+updateNavCounter();
