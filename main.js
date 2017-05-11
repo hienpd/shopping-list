@@ -10,39 +10,50 @@ function updateNavCounter() {
   navCounter.textContent = listItems.length;
 }
 
-function addItem() {
+function addItem(e) {
   let userInput = document.getElementById('add-item').value;
 
   if(userInput.trim() === '') {
     return;
   }
 
-  let list = document.getElementById('list');
   let addForm = document.getElementById('add-form');
-  let newItem = document.createElement('li');
-  let newText = document.createTextNode(userInput);
-  let newInput = document.createElement('input');
-  let newLabel = document.createElement('label');
 
   labelIdCount++;
 
+  let list = document.getElementById('list');
+  let newItem = document.createElement('li');
+  let newInput = document.createElement('input');
+  let newLabel = document.createElement('label');
+  let newText = document.createTextNode(userInput);
+  let newAnchor = document.createElement('a');
+  let newIcon = document.createElement('i');
+  let newIconText = document.createTextNode('delete');
+
   newItem.className = 'collection-item';
+  newAnchor.className = 'secondary-content';
+  newIcon.className = 'material-icons';
   newInput.setAttribute('type', 'checkbox');
   newInput.setAttribute('id', labelIdCount);
   newLabel.setAttribute('for', labelIdCount);
+  newAnchor.setAttribute('href', '#!');
 
-  newLabel.appendChild(newText);
   newItem.appendChild(newInput);
   newItem.appendChild(newLabel);
+  newItem.appendChild(newAnchor);
+  newLabel.appendChild(newText);
+  newIcon.appendChild(newIconText);
+  newAnchor.appendChild(newIcon);
 
   list.insertBefore(newItem, list.firstChild);
 
   addForm.reset();
   updateNavCounter();
+  e.preventDefault();
 }
 
-addForm.addEventListener('submit', function() {
-  addItem();
+addForm.addEventListener('submit', function(e) {
+  addItem(e);
 }, false);
 
 updateNavCounter();
