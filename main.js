@@ -17,7 +17,7 @@ function addItem(e) {
 
   let userInput = document.getElementById('add-item').value;
 
-  if(userInput.trim() === '') {
+  if (userInput.trim() === '') {
     return;
   }
 
@@ -53,10 +53,26 @@ function addItem(e) {
   updateNavCounter();
 }
 
+function deleteItem(e) {
+  let el = e.target;
+
+  if (el.nodeName !== 'I') {
+    return;
+  }
+
+  let list = document.getElementById('list');
+  let listItem = el.parentNode.parentNode;
+
+  list.removeChild(listItem);
+}
+
 addForm.addEventListener('submit', function(e) {
   addItem(e);
 }, false);
 
-listForm.addEventListener('click', updateNavCounter, false);
+listForm.addEventListener('click', function(e) {
+  deleteItem(e);
+  updateNavCounter();
+}, false);
 
 updateNavCounter();
