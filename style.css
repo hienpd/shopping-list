@@ -21,3 +21,7 @@ label {
   width: 420px;
   margin: auto;
 }
+
+input:checked ~ label {
+  color: #ccc;
+}
