@@ -1,13 +1,15 @@
 'use strict';
 
 let addForm = document.getElementById('add-form');
+let listForm = document.getElementById('list-form');
 let labelIdCount = 5;
 
 function updateNavCounter() {
   let listItems = document.querySelectorAll('li.collection-item');
   let navCounter = document.getElementById('counter');
+  let checkedItems = document.querySelectorAll('input:checked');
 
-  navCounter.textContent = listItems.length;
+  navCounter.textContent = listItems.length - checkedItems.length;
 }
 
 function addItem(e) {
@@ -21,7 +23,6 @@ function addItem(e) {
 
   labelIdCount++;
 
-  let addForm = document.getElementById('add-form');
   let list = document.getElementById('list');
   let newItem = document.createElement('li');
   let newInput = document.createElement('input');
@@ -55,5 +56,7 @@ function addItem(e) {
 addForm.addEventListener('submit', function(e) {
   addItem(e);
 }, false);
+
+listForm.addEventListener('click', updateNavCounter, false);
 
 updateNavCounter();
