@@ -11,16 +11,17 @@ function updateNavCounter() {
 }
 
 function addItem(e) {
+  e.preventDefault();
+
   let userInput = document.getElementById('add-item').value;
 
   if(userInput.trim() === '') {
     return;
   }
 
-  let addForm = document.getElementById('add-form');
-
   labelIdCount++;
 
+  let addForm = document.getElementById('add-form');
   let list = document.getElementById('list');
   let newItem = document.createElement('li');
   let newInput = document.createElement('input');
@@ -49,7 +50,6 @@ function addItem(e) {
 
   addForm.reset();
   updateNavCounter();
-  e.preventDefault();
 }
 
 addForm.addEventListener('submit', function(e) {
